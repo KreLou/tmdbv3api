@@ -33,6 +33,7 @@ class Movie(TMDb):
         "similar": "/movie/%s/similar",
         "external": "/find/%s",
         "release_dates": "/movie/%s/release_dates",
+        "watch_providers": "/movie/%s/watch/providers",
     }
 
     def details(
@@ -152,6 +153,14 @@ class Movie(TMDb):
         """
         return AsObj(**self._call(self._urls['release_dates'] % movie_id, ''))
 
+
+    def watch_providers(self, movie_id):
+        """
+        Get the Watch Providers for a movie.
+        :param movie_id:
+        :return:
+        """
+        return AsObj(**self._call(self._urls['watch_providers'] % movie_id, ''))
     def reviews(self, movie_id, page=1):
         """
         Get the user reviews for a movie.
